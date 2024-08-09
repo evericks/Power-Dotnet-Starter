@@ -21,7 +21,7 @@ builder.Services.AddHangfire(sqlConnectionString);
 builder.Services.AddControllersWithViews().AddNewtonsoftJsonOptions();
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 builder.Services.AddCorsWithOptions(allowSpecificOrigins);
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddValidators();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();
 builder.Services.AddAutoMapper(typeof(MappingProfile));

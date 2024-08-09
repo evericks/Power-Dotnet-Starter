@@ -1,6 +1,8 @@
 ﻿using Application.Services.Cache.Interfaces;
 using Application.Services.Interfaces;
 using Common.Constants;
+using Domain.Entities;
+using Domain.Models.Creates;
 using Infrastructure.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using HttpResponse = Common.HttpContexts.HttpResponse;
@@ -52,7 +54,7 @@ public class StudentsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostStudent()
+    public async Task<IActionResult> PostStudent([FromBody] StudentCreateModel model)
     {
         try
         {
