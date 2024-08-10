@@ -1,4 +1,5 @@
 ﻿using Domain.Validators;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -6,11 +7,10 @@ namespace Infrastructure.Configurations;
 
 public static class FluentValidationConfiguration
 {
-    public static void AddValidators(this IMvcBuilder builder)
+  public static void AddValidators(this IServiceCollection services)
     {
-        builder.AddFluentValidation(fv => 
-        {
-            fv.RegisterValidatorsFromAssemblyContaining<StudentCreateValidator>();
-        });
+        services.AddFluentValidationAutoValidation();
+        services.AddFluentValidationClientsideAdapters();
+        services.AddValidatorsFromAssembly(typeof(StudentCreateValidator).Assembly);
     }
 }

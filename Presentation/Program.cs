@@ -1,10 +1,7 @@
 using Application.Mappings;
-using Application.Settings;
 using Domain.Context;
-using Hangfire;
 using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +18,8 @@ builder.Services.AddHangfire(sqlConnectionString);
 builder.Services.AddControllersWithViews().AddNewtonsoftJsonOptions();
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 builder.Services.AddCorsWithOptions(allowSpecificOrigins);
-builder.Services.AddControllers().AddValidators();
+builder.Services.AddControllers();
+builder.Services.AddValidators();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
